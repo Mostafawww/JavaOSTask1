@@ -1,37 +1,40 @@
-import java.util.List;
+import java.util.Scanner;
 
 public class CustomerManagerApp {
 
-    // declare class variables
-    private static DAO<Customer> customerDAO = null;
 
     public static void main(String[] args) {
         // display a welcome message
         System.out.println("Welcome to the Customer Manager\n");
 
-        // set the class variables
-        customerDAO = new CustomerTextFile();
+       int action;
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("1 for list , 2 for add , 3 for delet , 4 for help , 5 for exit ");
+        System.out.print("Enter a command : ");
+        action=scanner.nextInt();
+        
+        while (action!=5) {
+            
 
-        // display the command menu
-        displayMenu();
-
-        // perform 1 or more actions
-        String action = "";
-        while (!action.equalsIgnoreCase("exit")) {
-            // get the input from the user
-            action = Console.getString("Enter a command: ");
-            System.out.println();
-
-            if (action.equalsIgnoreCase("list")) {
+            if (action==1) {
                 displayAllCustomers();
-            } else if (action.equalsIgnoreCase("add")) {
+                System.out.print("Enter a command : ");
+                 action=scanner.nextInt();
+            } else if (action==2) {
                 addCustomer();
-            } else if (action.equalsIgnoreCase("del") || action.equalsIgnoreCase("delete")) {
+                System.out.print("Enter a command : ");
+                 action=scanner.nextInt();
+            } else if (action==3) {
                 deleteCustomer();
-            } else if (action.equalsIgnoreCase("help") || action.equalsIgnoreCase("menu")) {
+                System.out.print("Enter a command : ");
+                 action=scanner.nextInt();
+            } else if (action==4) {
                 displayMenu();
-            } else if (action.equalsIgnoreCase("exit")) {
+                System.out.print("Enter a command : ");
+                 action=scanner.nextInt();
+            } else if (action==5) {
                 System.out.println("Bye.\n");
+                break;
             } else {
                 System.out.println("Error! Not a valid command.\n");
             }
